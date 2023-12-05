@@ -1,0 +1,67 @@
+table {
+  //da obuhvata sirinu ekrana -2 puta po 20px sa strane i stavlja se u centar
+  width: calc(100% - 40px);
+  border-collapse: collapse;
+  // 20 piksela gore i dole, automatski centrirano horizontalno
+  margin: 20px auto;
+}
+
+thead {
+  background-color: #f2f2f2; // Light gray background for the header
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd; // Bottom border for each cell
+}
+
+th {
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5; // Light gray background on hover
+}
+
+form {
+  max-width: 400px; // Adjust the maximum width as needed
+  margin: 20px auto; // Center the form on the page
+  padding: 20px;
+  border: 1px solid #ddd; // Border around the form
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Box shadow for a subtle lift
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc; // Border for input fields
+    border-radius: 4px;
+
+    x &:focus {
+      outline: none;
+      border-color: #007bff; // Highlight border color on focus
+    }
+  }
+
+  button {
+    background-color: #007bff; // Button background color
+    color: #fff; // Button text color
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0056b3; // Darker background color on hover
+    }
+  }
+}

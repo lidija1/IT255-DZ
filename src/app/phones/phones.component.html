@@ -1,0 +1,40 @@
+<table *ngIf="phones">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Cena</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let phone of phones">
+            <td>{{phone.id}}</td>
+            <td>{{phone.markat}}</td>
+            <td>{{phone.modelt}}</td>
+            <td>{{phone.cenat}}</td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf="!phones">
+    <p>Loading...</p>
+</div>
+
+
+<form #phoneForm="ngForm">
+    <div>
+        <!-- <label>ID</label>
+        <input type="number" [(ngModel)]="newPhone.id" name="id"> -->
+
+        <label>Marka</label>
+        <input type="text" [(ngModel)]="newPhone.markat" name="markat" required>
+
+        <label>Model</label>
+        <input type="text" [(ngModel)]="newPhone.modelt" name="modelt" required>
+
+        <label>Cena</label>
+        <input type="number" [(ngModel)]="newPhone.cenat" name="cenat" required>
+
+        <button type="button" (click)="dodajTelefon()">Dodaj telefon</button>
+    </div>
+</form>

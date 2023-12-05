@@ -1,0 +1,21 @@
+<table *ngIf="phones">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Cena</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let phone of phones">
+            <td>{{phone.id}}</td>
+            <td>{{phone.markat}}</td>
+            <td>{{phone.modelt}}</td>
+            <td>{{phone.cenat}}</td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf="!phones">
+    <p>Loading...</p>
+</div>

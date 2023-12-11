@@ -19,3 +19,30 @@
 <div *ngIf="!phones">
     <p>Loading...</p>
 </div>
+<div>
+    <label>
+        <input type="checkbox" id="ram8gb" (change)="promeniVrednostRama()"> 8 GB RAM
+    </label><br>
+    <div *ngIf="uvecanRacunRam">
+        Vas racun je povecan za {{ram}} CHF
+    </div>
+
+    <label>
+        <input type="checkbox" id="kamera12mp" (change)="promeniVrednostKamera()"> 12 MP kamera
+    </label><br>
+    <div *ngIf="uvecanRacunKamera">
+        Vas racun je povecan za {{kamera}} CHF
+    </div>
+
+    <label>
+        <input type="checkbox" id="ukljucujePunjac" (change)="promeniVrednostPunjac()"> Uključuje punjač
+    </label>
+    <div *ngIf="uvecanRacunPunjac">
+        Vas racun je povecan za {{punjac}} CHF
+    </div>
+
+    <!-- <div *ngIf="zbirracuna">
+        Ukupno uvecan racun je: {{zbir}} CHF
+    </div> -->
+</div>
+

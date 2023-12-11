@@ -14,7 +14,27 @@ interface Phone {
   templateUrl: './ponude.component.html',
   styleUrls: ['./ponude.component.scss']
 })
-export class PonudeComponent implements OnInit{
+export class PonudeComponent implements OnInit {
+// zbirracuna: boolean = false;
+promeniVrednostPunjac() {
+this.uvecanRacunPunjac = !this.uvecanRacunPunjac;
+}
+promeniVrednostKamera() {
+this.uvecanRacunKamera = !this.uvecanRacunKamera;
+}
+promeniVrednostRama() {
+this.uvecanRacunRam = !this.uvecanRacunRam;
+}
+  uvecanRacunRam: boolean = false;
+  ram: number = 50;
+  uvecanRacunKamera: boolean = false;
+  kamera: number = 30;
+  uvecanRacunPunjac: boolean = false;
+  punjac: number = 20;
+
+
+
+
   constructor(private http: HttpClient) { }
   phones: Phone[] = [];
   ngOnInit() {

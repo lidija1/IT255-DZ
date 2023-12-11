@@ -6,6 +6,7 @@ import { PonudeComponent } from './ponude/ponude.component';
 import { PreporukeComponent } from './preporuke/preporuke.component';
 import { OnamaComponent } from './onama/onama.component';
 import { PhonesComponent } from './phones/phones.component';
+import { ReactiveFormsModule } from '@angular/forms'; //za validaciju
 
 const routes: Routes = [
   { path: 'ponuda', component: PonudeComponent },
@@ -15,7 +16,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    ReactiveFormsModule
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

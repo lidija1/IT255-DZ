@@ -12,7 +12,7 @@
             <td>{{phone.id}}</td>
             <td>{{phone.markat}}</td>
             <td>{{phone.modelt}}</td>
-            <td>{{phone.cenat}}</td>
+            <td>{{phone.cenat}} <b>CHF</b></td>
         </tr>
     </tbody>
 </table>
@@ -21,20 +21,83 @@
 </div>
 
 
-<form #phoneForm="ngForm">
-    <div>
+<!-- <form #phoneForm="ngForm">
+    <div> -->
         <!-- <label>ID</label>
         <input type="number" [(ngModel)]="newPhone.id" name="id"> -->
 
-        <label>Marka</label>
-        <input type="text" [(ngModel)]="newPhone.markat" name="markat" required>
+        <!-- <label>Marka</label>
+        <input type="text" name="markat" required>
+        <div class="validacija"
+            *ngIf="phoneForm && phoneForm.controls['markat']?.hasError('required') && phoneForm.controls['markat']?.touched">
+            Marka je obavezna.
+        </div>
+
 
         <label>Model</label>
-        <input type="text" [(ngModel)]="newPhone.modelt" name="modelt" required>
+        <input type="text"  name="modelt" required>
+        <div class="validacija"
+            *ngIf="phoneForm && phoneForm.controls['modelt']?.hasError('required') && phoneForm.controls['modelt']?.touched">
+            Model je obavezan.
+        </div>
+
 
         <label>Cena</label>
-        <input type="number" [(ngModel)]="newPhone.cenat" name="cenat" required>
+        <input type="number" name="cenat" required>
+        <div class="validacija"
+            *ngIf="phoneForm && phoneForm.controls['cenat']?.hasError('required') && phoneForm.controls['cenat']?.touched">
+            Cena je obavezna.
+        </div>
+        <div class="validacija"
+            *ngIf="phoneForm && phoneForm.controls['cenat']?.hasError('min') && phoneForm.controls['cenat']?.touched">
+            Cena ne sme biti manja od 0.
+        </div>
+        <div class="validacija"
+            *ngIf="phoneForm && phoneForm.controls['cenat'] && phoneForm.controls['cenat']?.hasError('pattern') && phoneForm.controls['cenat']?.touched">
+            Unesite validnu numeričku vrednost.
+        </div>
 
-        <button type="button" (click)="dodajTelefon()">Dodaj telefon</button>
+        <button type="button" (click)="dodajTelefon()"  [disabled]="phoneForm.invalid">Dodaj telefon</button>
+        <div *ngIf="showErrorMessage" class="error-message">
+            Popunite sve podatke.
+        </div>
+    </div>
+</form> -->
+<form [formGroup]="phoneForm">
+    <div>
+        <label>Marka</label>
+        <input type="text" formControlName="markat" required>
+        <div class="validacija"
+            *ngIf="phoneForm.get('markat')?.hasError('required') && phoneForm.get('markat')?.touched">
+            Marka je obavezna.
+        </div>
+
+        <label>Model</label>
+        <input type="text" formControlName="modelt" required>
+        <div class="validacija"
+            *ngIf="phoneForm.get('modelt')?.hasError('required') && phoneForm.get('modelt')?.touched">
+            Model je obavezan.
+        </div>
+
+        
+        <label>Cena</label>
+        <input type="number" formControlName="cenat" name="cenat" required>
+        <div class="validacija"
+            *ngIf="phoneForm.controls['cenat']?.hasError('required') && phoneForm.controls['cenat']?.touched">
+            Cena je obavezna.
+        </div>
+        <div class="validacija"
+            *ngIf="phoneForm && phoneForm.controls['cenat']?.hasError('min') && phoneForm.controls['cenat']?.touched">
+            Cena ne sme biti manja od 0.
+        </div>
+        <div class="validacija"
+            *ngIf="phoneForm && phoneForm.controls['cenat'] && phoneForm.controls['cenat']?.hasError('pattern') && phoneForm.controls['cenat']?.touched">
+            Unesite validnu numeričku vrednost.
+        </div>
+
+        <button type="button" (click)="dodajTelefon()" [disabled]="phoneForm.invalid">Dodaj telefon</button>
+        <div *ngIf="showErrorMessage" class="error-message">
+            Popunite sve podatke.
+        </div>
     </div>
 </form>

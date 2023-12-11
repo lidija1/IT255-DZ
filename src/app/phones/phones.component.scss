@@ -1,3 +1,4 @@
+//tabela
 table {
   //da obuhvata sirinu ekrana -2 puta po 20px sa strane i stavlja se u centar
   width: calc(100% - 40px);
@@ -24,7 +25,7 @@ th {
 tbody tr:hover {
   background-color: #f5f5f5; // Light gray background on hover
 }
-
+//forma
 form {
   max-width: 400px; // Adjust the maximum width as needed
   margin: 20px auto; // Center the form on the page
@@ -64,4 +65,16 @@ form {
       background-color: #0056b3; // Darker background color on hover
     }
   }
+}
+//validacija
+.validacija{
+  color: red;
+  padding-bottom: 20px;
+  padding-top: -10px;
+  margin-top: -10px;
+}
+//error za dugme
+.error-message {
+  color: red;
+  margin-top: 10px;
 }

@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MobileService } from '../services/mobile.service';
 
 interface Phone {
   id: number;
   markat: string;
   modelt: string;
   cenat: number;
+  selected?: boolean;
 }
 
 @Component({
@@ -16,21 +18,46 @@ interface Phone {
 })
 export class PhonesComponent implements OnInit {
 
+  phoneForm: FormGroup;
+  showErrorMessage: boolean = false;
   phones: Phone[] = [];
+  selectedPhones: Phone[] = [];
   newPhone: Phone = {
     id: 0, markat: '', modelt: '', cenat: 0
   };
 
-  phoneForm: FormGroup;
-  showErrorMessage: boolean = false;
-
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private mobileService: MobileService) {
     this.phoneForm = this.fb.group({
       markat: ['', Validators.required],
       modelt: ['', Validators.required],
       cenat: [0 , [Validators.required, Validators.min(0)]]
     });
   }
+
+  
+  //9 domaci za dodavanje servisa sa brojem telefona
+  updateSelectedPhones(phoneId: number, event: any): void {
+    const checked = event.target?.checked || false;
+    const phone = this.phones.find(p => p.id === phoneId);
+    if (phone) {
+      phone.selected = checked;
+
+      if (checked) {
+        this.selectedPhones.push(phone);
+      } else {
+        const index = this.selectedPhones.findIndex(p => p.id === phoneId);
+        if (index !== -1) {
+          this.selectedPhones.splice(index, 1);
+        }
+      }
+    }
+  }
+  calculateTotalPrice(): number {
+    // Funkcija koja izračunava ukupnu cenu odabranih telefona
+    return this.selectedPhones.reduce((sum, phone) => sum + phone.cenat, 0);
+  }
+
+
 
   ngOnInit() {
     // Prikazujemo podatke prilikom inicijalizacije komponente
@@ -49,6 +76,7 @@ export class PhonesComponent implements OnInit {
       });
     }
   }
+
 
   dodajTelefon() {
     if (!this.phoneForm) {

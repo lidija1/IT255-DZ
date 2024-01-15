@@ -1,22 +1,16 @@
 {
   "phones": [
     {
-      "id": 1,
-      "markat": "Samsung",
-      "modelt": "Galaxy S21",
-      "cenat": 1200
+      "marka": "Samsung",
+      "model": "Galaxy S21",
+      "cena": 1100,
+      "id": 1
     },
     {
-      "id": 2,
-      "markat": "Apple",
-      "modelt": "iPhone 13",
-      "cenat": 1400
-    },
-    {
-      "id": 3,
-      "markat": "Huawei",
-      "modelt": "P40",
-      "cenat": 1000
+      "marka": "Huawei",
+      "model": "P40",
+      "cena": 900,
+      "id": 3
     }
   ]
 }

@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 
 interface Phone {
   id: number;
-  markat: string;
-  modelt: string;
-  cenat: number;
+  marka: string;
+  model: string;
+  cena: number;
 }
 
 @Component({

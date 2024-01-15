@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 export class MobileService {
 
   getPrice(numberOfPhones: number): number {
-    // Ovde dodajte logiku za izračunavanje cene na osnovu broja telefona
-    const cenaPoTelefonu = 100; // Postavljeno na primeru, prilagodite prema vašim potrebama
+    // Logika za izračunavanje cene na osnovu broja telefona
+    const cenaPoTelefonu = 100;
     return numberOfPhones * cenaPoTelefonu;
   }
 }

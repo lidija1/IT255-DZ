@@ -1,21 +1,34 @@
 <table *ngIf="phones">
     <thead>
         <tr>
-            <th>ID</th>
+            <!-- <th>ID</th> -->
             <th>Marka</th>
             <th>Model</th>
             <th>Cena</th>
+            <th>Odaberi</th>
             <th>Odaberi</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let phone of phones">
-            <td>{{phone.id}}</td>
-            <td>{{phone.markat}}</td>
-            <td>{{phone.modelt}}</td>
-            <td>{{phone.cenat}} <b>CHF</b></td>
+            <!-- <td> {{phone.id}}</td> -->
+            <td>{{phone.marka}}</td>
+            <td>{{phone.model}}</td>
+            <td>{{phone.cena}} <b>CHF</b></td>
             <td>
-                <input type="checkbox" (change)="updateSelectedPhones(phone.id, $event)">
+                <!-- <input type="checkbox" (change)="updateSelectedPhones(phone.id, $event)"> -->
+                <label>
+                    <input
+                      type="checkbox"
+                      [checked]="isSelected(phone)"
+                      (change)="toggleSelection(phone)"
+                    />
+                    {{ phone.id }} 
+                  </label>
+            </td>
+            <td>
+                <button (click)="azurirajTelefon(phone)">Ažuriraj</button>
+                <button (click)="obrisiTelefon(phone.phoneId)">Obriši</button>
             </td>
         </tr>
     </tbody>
@@ -23,42 +36,54 @@
 <div *ngIf="!phones">
     <p>Loading...</p>
 </div>
-<p *ngIf="selectedPhones.length > 0">Ukupna cena odabranih telefona: {{ calculateTotalPrice() }}</p>
+<p *ngIf="selectedPhones.length > 0">Ukupna cena odabranih telefona: {{ totalCost }} <b>CHF</b></p>
 
 
 <form [formGroup]="phoneForm">
     <div>
-        <label>Marka</label>
-        <input type="text" formControlName="markat" required>
+
+        <!-- <label>id</label>
+        <input type="number" formControlName="id" required>
         <div class="validacija"
-            *ngIf="phoneForm.get('markat')?.hasError('required') && phoneForm.get('markat')?.touched">
+            *ngIf="phoneForm.get('id')?.hasError('required') && phoneForm.get('id')?.touched">
+            id je obavezan.
+        </div> -->
+
+        <label for="marka">Marka</label>
+        <input type="text" formControlName="marka" id="marka" name="marka" required>
+        <div class="validacija" *ngIf="phoneForm.get('marka')?.hasError('required') && phoneForm.get('marka')?.touched">
             Marka je obavezna.
         </div>
 
-        <label>Model</label>
-        <input type="text" formControlName="modelt" required>
-        <div class="validacija"
-            *ngIf="phoneForm.get('modelt')?.hasError('required') && phoneForm.get('modelt')?.touched">
+
+        <label for="model">Model</label>
+        <input type="text" formControlName="model" id="model" name="model" required>
+        <div class="validacija" *ngIf="phoneForm.get('model')?.hasError('required') && phoneForm.get('model')?.touched">
             Model je obavezan.
         </div>
 
-        
-        <label>Cena</label>
-        <input type="number" formControlName="cenat" name="cenat" required>
+
+        <label for="cena">Cena</label>
+        <input type="number" formControlName="cena" id="cena" name="cena" required>
         <div class="validacija"
-            *ngIf="phoneForm.controls['cenat']?.hasError('required') && phoneForm.controls['cenat']?.touched">
+            *ngIf="phoneForm.controls['cena']?.hasError('required') && phoneForm.controls['cena']?.touched">
             Cena je obavezna.
         </div>
         <div class="validacija"
-            *ngIf="phoneForm && phoneForm.controls['cenat']?.hasError('min') && phoneForm.controls['cenat']?.touched">
+            *ngIf="phoneForm && phoneForm.controls['cena']?.hasError('min') && phoneForm.controls['cena']?.touched">
             Cena ne sme biti manja od 0.
         </div>
         <div class="validacija"
-            *ngIf="phoneForm && phoneForm.controls['cenat'] && phoneForm.controls['cenat']?.hasError('pattern') && phoneForm.controls['cenat']?.touched">
+            *ngIf="phoneForm && phoneForm.controls['cena'] && phoneForm.controls['cena']?.hasError('pattern') && phoneForm.controls['cena']?.touched">
             Unesite validnu numeričku vrednost.
         </div>
+        <div class="button-container">
+            <button type="button" class="btndodaj" (click)="dodajTelefon()" [disabled]="phoneForm.invalid">Dodaj
+                telefon</button>
 
-        <button type="button" (click)="dodajTelefon()" [disabled]="phoneForm.invalid">Dodaj telefon</button>
+            <button type="button" class="btnazuriraj" (click)="sacuvajAzuriranje()"
+                [disabled]="phoneForm.invalid">Sačuvaj ažuriranje</button>
+        </div>
         <div *ngIf="showErrorMessage" class="error-message">
             Popunite sve podatke.
         </div>

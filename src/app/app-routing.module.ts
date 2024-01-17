@@ -12,7 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 const routes: Routes = [
   { path: 'ponuda', component: PonudeComponent },
   { path: 'preporuka', component: PreporukeComponent },
-  { path: 'navbar', component: NavbarComponent },
+  // { path: 'navbar', component: NavbarComponent },
   { path: 'onama', component: OnamaComponent },
   { path: 'phones', component: PhonesComponent },
   { path: '', redirectTo: '/phones', pathMatch:'full' },

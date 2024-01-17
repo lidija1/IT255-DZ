@@ -17,7 +17,7 @@
     "@angular/forms": "^16.0.0",
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
-    "@angular/router": "^16.0.0",
+    "@angular/router": "^16.2.12",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "example-package": "^0.0.1",

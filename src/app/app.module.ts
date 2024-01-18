@@ -9,6 +9,7 @@ import { OnamaComponent } from './onama/onama.component';
 import { PreporukeComponent } from './preporuke/preporuke.component';
 import { PonudeComponent } from './ponude/ponude.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PhoneListComponent } from './phone-list/phone-list.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     OnamaComponent,
     PreporukeComponent,
     PonudeComponent,
-    NavbarComponent
+    NavbarComponent,
+    PhoneListComponent
   ],
   imports: [
     BrowserModule,

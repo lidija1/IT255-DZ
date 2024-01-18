@@ -7,7 +7,9 @@ import { PreporukeComponent } from './preporuke/preporuke.component';
 import { OnamaComponent } from './onama/onama.component';
 import { PhonesComponent } from './phones/phones.component';
 import { ReactiveFormsModule } from '@angular/forms'; //za validaciju
-import { NavbarComponent } from './navbar/navbar.component';
+// import { NavbarComponent } from './navbar/navbar.component';
+import { PhoneListComponent } from './phone-list/phone-list.component';
+
 
 const routes: Routes = [
   { path: 'ponuda', component: PonudeComponent },
@@ -15,6 +17,7 @@ const routes: Routes = [
   // { path: 'navbar', component: NavbarComponent },
   { path: 'onama', component: OnamaComponent },
   { path: 'phones', component: PhonesComponent },
+  { path: 'lista', component: PhoneListComponent },
   { path: '', redirectTo: '/phones', pathMatch:'full' },
 ];
 

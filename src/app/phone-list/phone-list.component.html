@@ -1,4 +1,13 @@
+<!-- phone-list.component.html -->
+
 <div *ngFor="let phone of phones" class="div">
     <h3>{{ phone.marka }} {{ phone.model }}</h3>
-    <p>Cena: {{ phone.cena }} <b>CHF</b></p>
+    <p>Cena: {{ phone.cena}} <b>CHF</b></p>
+
+    <button (click)="addTask('Nova akcija za ' + phone.marka)">Dodaj zadatak</button>
+    <button (click)="removeTask(phone.id)">Ukloni zadatak</button>
+    <button (click)="toggleTask(phone.id)">Promeni status zadatka</button> 
 </div>
+
+<input [(ngModel)]="newTaskTitle" placeholder="Unesi novi zadatak" />
+<button (click)="addTask(newTaskTitle)">Dodaj zadatak</button>

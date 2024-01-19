@@ -74,6 +74,10 @@ export class PhonesComponent implements OnInit {
     // }
     this.refreshPhones();
   }
+  onSubmit(): void {
+    // Your submit logic here
+    console.log('Form submitted!');
+  }
 
 
 
